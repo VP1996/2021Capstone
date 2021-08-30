@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - StartPos
+  - Platform
+  - UI
+  - eventSys
+  - backgrond
+  - tilemap
   layers:
   - Default
   - TransparentFX
