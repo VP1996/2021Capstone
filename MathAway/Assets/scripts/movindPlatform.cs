@@ -4,28 +4,26 @@ using UnityEngine;
 
 public class movindPlatform : MonoBehaviour
 {
-    float dirX;
-    float speed = 3f;
+    public float pointA;
+    public float pointB;
+    public float pointC;
+    public float pointD;
 
-    bool movingRight = true;
+    public Vector2 pos1;
+    public Vector2 pos2;
+    public float speed = 0.2f;
+
+    void Start()
+    {
+        //float temp1 = Random.Range(pointC, pointD);
+        pos1 = new Vector2(pointA, transform.position.y);
+        pos2 = new Vector2(pointB, transform.position.y);
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x > 4f)
-        {
-            movingRight = false;
-        }else if(transform.position.x < -4f)
-        {
-            movingRight = true;
-        }
-
-        if (movingRight) 
-        {
-            transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
-        }else
-        {
-            transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
-        }
+        //transform.position = Vector2.Lerp(pos1, pos2, Mathf.PingPong(Time.time * speed, 1f));
     }
 }
