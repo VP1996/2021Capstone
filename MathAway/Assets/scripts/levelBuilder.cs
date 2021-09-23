@@ -4,50 +4,55 @@ using UnityEngine;
 
 public class levelBuilder : MonoBehaviour
 {
-    public GameObject plat1;
-    public GameObject plat2;
-    public GameObject plat3;
-
-
-
+    public List<GameObject> planks = new List<GameObject>();
     public float pointA;
     public float pointB;
     public float pointC;
     public float pointD;
-    public int numberOfPlanks1;
-    public int numberOfPlanks2;
-    public int numberOfPlanks3;
+    public int repeatV, repeatH;
+    public float WaitTime;
+    int repeat = 0;
+    private IEnumerator coroutine;
 
-    public Vector3 pos1, pos2, pos3;
-    //public float speed = 0.2f;
+    private List<Vector3> pos = new List<Vector3>();
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        for (int i = 0; i < repeatV; i++)
+            {
+                int temp1 = (int)(pointC + 2 * i);
 
+                for (int x = 0; x < repeatH; x++)
+                {
+                    int temp2 = (int)(pointA + 5 * x);
+                    pos.Add(new Vector3(temp2, temp1, 0));
+                }
+            }
+            coroutine = WaitAndBuild(WaitTime);
+            StartCoroutine(coroutine);
+            repeat = 1;
+    }
 
-        for (int i = 1; i <= numberOfPlanks1; i++)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "GroundCheck")
         {
-            float temp1 = Random.Range(pointC, pointD);
-            float temp2 = Random.Range(pointA, pointB);
-            pos1 = new Vector3(temp2, temp1, 0);
-            Instantiate(plat1, pos1, transform.rotation, transform);
-        }
-        for (int i = 1; i <= numberOfPlanks2; i++)
-        {
-            float temp1 = Random.Range(pointC, pointD);
-            pos1 = new Vector3(Random.Range(pointA, pointB), temp1, 0);
-            Instantiate(plat2, pos1, transform.rotation, transform);
-        }
-        for (int i = 1; i <= numberOfPlanks3; i++)
-        {
-            float temp1 = Random.Range(pointC, pointD);
-            pos1 = new Vector3(Random.Range(pointA, pointB), temp1, 0);
-            Instantiate(plat3, pos1, transform.rotation, transform);
+            Debug.Log("bump");
         }
     }
 
 
-    
+    private IEnumerator WaitAndBuild(float waitTime)
+    {
+        while (true)
+        {
+            Instantiate(planks[Random.Range(0, planks.Count)], pos[Random.Range(0, pos.Count)], transform.rotation, transform);
+            yield return new WaitForSeconds(waitTime);
+        }
+    }
+
+
+
+
 }
 

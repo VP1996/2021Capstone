@@ -18,6 +18,7 @@ public class Death : MonoBehaviour
         {
             difficulty = collisionGameObject.GetComponent<difficulty>().diff;
             string name = "Start position (" + difficulty + ")";
+            FindObjectOfType<AudioManager>().Play("Death");
             collisionGameObject.transform.position = GameObject.Find(name).transform.position;
 
             count++;

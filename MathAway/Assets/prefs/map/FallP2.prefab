@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 6029453343766672762}
   - component: {fileID: -6959883039163272208}
   - component: {fileID: 3283099626937826648}
+  - component: {fileID: 3845439470457890714}
   m_Layer: 0
-  m_Name: Platform_Wood
+  m_Name: FallP2
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +29,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6029453343766672742}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -137.31, y: -17.279999, z: 8.484055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,9 +98,9 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 41a099392301d3b4b84c8a6f87864bca, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01604557, y: 0.17248988}
+  m_Offset: {x: -0.01604557, y: 0.14581978}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3186321, y: 0.39829016}
+  m_Size: {x: 2.3186321, y: 0.34494996}
   m_EdgeRadius: 0
 --- !u!50 &6029453343766672762
 Rigidbody2D:
@@ -140,11 +141,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6029453343766672742}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8e8d99335b03ef428ba79c0e36ed3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaitTime: 2
+  plank: {fileID: 6029453343766672742}
 --- !u!114 &3283099626937826648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +155,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6029453343766672742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbe0d236ac9b17a4789d5789c261e9cf, type: 3}
   m_Name: 
@@ -164,3 +167,22 @@ MonoBehaviour:
   pos1: {x: 0, y: 0}
   pos2: {x: 0, y: 0}
   speed: 0.2
+--- !u!251 &3845439470457890714
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6029453343766672742}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1

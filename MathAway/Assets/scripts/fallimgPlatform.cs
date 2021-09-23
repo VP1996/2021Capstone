@@ -5,53 +5,41 @@ using UnityEngine;
 public class fallimgPlatform : MonoBehaviour
 {
     Rigidbody2D rb;
-    //BoxCollider2D bc;
     Vector2 currentPosition;
-    bool movingBack;
+    public float WaitTime;
+    public GameObject plank;
+    private IEnumerator coroutine;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //bc = GetComponent<BoxCollider2D>();
-        currentPosition = transform.position;
+        currentPosition = gameObject.transform.position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject collisionGameObject = collision.gameObject;
         
-        if (collisionGameObject.name == "Player" && movingBack ==false)
+        if (collisionGameObject.name == "Player")
         {
-            Invoke("Falllatform", 1f);
+            coroutine = WaitAndBuild(WaitTime);
+            StartCoroutine(coroutine);
         }
     }
 
-    void Falllatform()
+
+    private IEnumerator WaitAndBuild(float waitTime)
     {
+        yield return new WaitForSeconds(waitTime);
         rb.isKinematic = false;
-        //bc.isTrigger.Equals(true);
-        Invoke("BackPlatform", 2f);
-    }
-
-    void BackPlatform()
-    {
-        rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(waitTime);
         rb.isKinematic = true;
-        movingBack = true;
+        GameObject plankNew = Instantiate(plank, currentPosition, Quaternion.identity, transform.parent);
+        Destroy(gameObject);
+
+        
 
     }
 
-    void Update()
-    {
-        if (movingBack == true)
-        {
-            transform.position = currentPosition;
-        } 
-
-        if (transform.position.y == currentPosition.y)
-        {
-            movingBack = false;
-
-        }
-    }
 }
