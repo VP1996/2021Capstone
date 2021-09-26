@@ -6,7 +6,7 @@ public class fallimgPlatform : MonoBehaviour
 {
     Rigidbody2D rb;
     Vector2 currentPosition;
-    public float WaitTime;
+    float WaitTime;
     public GameObject plank;
     private IEnumerator coroutine;
 
@@ -15,6 +15,7 @@ public class fallimgPlatform : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         currentPosition = gameObject.transform.position;
+        WaitTime = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().waitTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -33,7 +34,7 @@ public class fallimgPlatform : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         rb.isKinematic = false;
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(2);
         rb.isKinematic = true;
         GameObject plankNew = Instantiate(plank, currentPosition, Quaternion.identity, transform.parent);
         Destroy(gameObject);

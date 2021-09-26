@@ -38,10 +38,13 @@ public class PauseMenu : MonoBehaviour
 
     public void ResetGame()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<difficulty>().SetValues(0);
+        GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().SetValues(0,0,0,0);
+        GameObject.Find("Results").gameObject.GetComponent<Results>().ResetResults(0, 0, 0, 0,0,0);
+        FindObjectOfType<AudioManager>().Stop("Background");
+        FindObjectOfType<AudioManager>().Play("Background");
         Debug.Log("Load");
         Time.timeScale = 1f;
+        
         SceneManager.LoadScene("MainScreen");
         pauseMenuUI.SetActive(false);
         GameIsPaused = false;

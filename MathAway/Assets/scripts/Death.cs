@@ -13,15 +13,26 @@ public class Death : MonoBehaviour
     
     {
         GameObject collisionGameObject = collision.gameObject;
+        Scene scene = SceneManager.GetActiveScene();
 
-        if (collisionGameObject.name == "Player")
+        if (collisionGameObject.name == "Player" || collisionGameObject.name == "Player(Clone)")
         {
-            difficulty = collisionGameObject.GetComponent<difficulty>().diff;
-            string name = "Start position (" + difficulty + ")";
-            FindObjectOfType<AudioManager>().Play("Death");
-            collisionGameObject.transform.position = GameObject.Find(name).transform.position;
-
             count++;
+            difficulty = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().diff;
+            if (scene.name == "Level1")
+            {
+                string name = "Start position (" + difficulty + ")(Clone)";
+                FindObjectOfType<AudioManager>().Play("Death");
+                collisionGameObject.transform.position = GameObject.Find(name).transform.position;
+                GameObject.Find("Results").gameObject.GetComponent<Results>().AddDeathsLevel1(count);
+            }
+            else
+            {
+                string name = "Start position (" + difficulty + ")";
+                FindObjectOfType<AudioManager>().Play("Death");
+                collisionGameObject.transform.position = GameObject.Find(name).transform.position;
+                GameObject.Find("Results").gameObject.GetComponent<Results>().AddDeathsLevel2(count);
+            }
         }
     }
 }

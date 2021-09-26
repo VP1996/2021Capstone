@@ -12,18 +12,22 @@ TagManager:
   - tilemap
   - death
   - action
+  - Bonus
+  - Destructable
+  - door
+  - StartPosition
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Projectile
   - Water
   - UI
   - Player
   - Collide
   - action
-  - 
-  - 
+  - Room
+  - Builder
   - 
   - 
   - 

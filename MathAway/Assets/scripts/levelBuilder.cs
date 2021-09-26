@@ -4,51 +4,58 @@ using UnityEngine;
 
 public class levelBuilder : MonoBehaviour
 {
-    public List<GameObject> planks = new List<GameObject>();
+    public GameObject Rplanks;
+    public GameObject Wplanks;
+    public List<GameObject> clones = new List<GameObject>();
     public float pointA;
-    public float pointB;
     public float pointC;
-    public float pointD;
     public int repeatV, repeatH;
     public float WaitTime;
     int repeat = 0;
-    private IEnumerator coroutine;
 
-    private List<Vector3> pos = new List<Vector3>();
 
-    private void Start()
+    
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        for (int i = 0; i < repeatV; i++)
-            {
-                int temp1 = (int)(pointC + 2 * i);
-
-                for (int x = 0; x < repeatH; x++)
-                {
-                    int temp2 = (int)(pointA + 5 * x);
-                    pos.Add(new Vector3(temp2, temp1, 0));
-                }
-            }
-            coroutine = WaitAndBuild(WaitTime);
-            StartCoroutine(coroutine);
+        if (other.gameObject.tag == "Player" && repeat == 0)
+        {
+            buildLevel();
             repeat = 1;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name == "GroundCheck")
-        {
-            Debug.Log("bump");
         }
     }
 
 
-    private IEnumerator WaitAndBuild(float waitTime)
+    
+    private void buildLevel()
     {
-        while (true)
+        
+        for (int i = 0; i < repeatV; i++)
         {
-            Instantiate(planks[Random.Range(0, planks.Count)], pos[Random.Range(0, pos.Count)], transform.rotation, transform);
-            yield return new WaitForSeconds(waitTime);
+            int temp1 = (int)(pointC + 4 * i);
+            int randomPositionH = Random.Range(0, repeatH);
+
+            for (int x = 0; x < repeatH; x++)
+            {
+                int temp2 = (int)(pointA + 6 * x);
+                if (randomPositionH == x)
+                {
+                    clones.Add(Instantiate(Rplanks, new Vector3(temp2, temp1, 0), transform.rotation, transform));
+                }
+                else
+                {
+                    clones.Add(Instantiate(Wplanks, new Vector3(temp2, temp1, 0), transform.rotation, transform));
+                }
+
+            }
         }
+    }
+
+    public void Reset()
+    {
+        clones.Clear();
+        clones = new List<GameObject>();
+        repeat = 0;
     }
 
 

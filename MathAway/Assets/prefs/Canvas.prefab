@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1828878657582694309}
   - component: {fileID: 1828878657582694310}
   - component: {fileID: 1828878657582694311}
-  - component: {fileID: 1828878657582694328}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: UI
@@ -115,18 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1828878659273312501}
---- !u!114 &1828878657582694328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828878657582694329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27eae0e348ed251419cb0d7db61e5511, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1828878657673300513
 GameObject:
   m_ObjectHideFlags: 0

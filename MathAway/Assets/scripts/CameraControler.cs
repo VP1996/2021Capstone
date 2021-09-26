@@ -9,6 +9,7 @@ public class CameraControler : MonoBehaviour
     public bool isLeft;
     private Transform player;
     private int lastX;
+    //public static CameraControler instance;
 
     void Start()
     {
@@ -31,7 +32,8 @@ public class CameraControler : MonoBehaviour
 
     void Update()
     {
-        if(player)
+        FindPlayer(isLeft);
+        if (player)
         {
             int currentX = Mathf.RoundToInt(player.position.x);
             if (currentX > lastX) { isLeft = false; } else if (currentX < lastX) { isLeft = true; }
