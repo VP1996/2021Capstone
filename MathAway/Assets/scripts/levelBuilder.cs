@@ -20,8 +20,8 @@ public class levelBuilder : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && repeat == 0)
         {
-            buildLevel();
             repeat = 1;
+            buildLevel();
         }
     }
 
@@ -40,11 +40,11 @@ public class levelBuilder : MonoBehaviour
                 int temp2 = (int)(pointA + 6 * x);
                 if (randomPositionH == x)
                 {
-                    clones.Add(Instantiate(Rplanks, new Vector3(temp2, temp1, 0), transform.rotation, transform));
+                    clones.Add(Instantiate(Rplanks, new Vector3(temp2, temp1, 0), transform.rotation, GameObject.Find("level builder").gameObject.transform));
                 }
                 else
                 {
-                    clones.Add(Instantiate(Wplanks, new Vector3(temp2, temp1, 0), transform.rotation, transform));
+                    clones.Add(Instantiate(Wplanks, new Vector3(temp2, temp1, 0), transform.rotation, GameObject.Find("level builder").gameObject.transform));
                 }
 
             }

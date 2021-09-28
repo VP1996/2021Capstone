@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3837855677166359674}
   - component: {fileID: 6064548716562912819}
   - component: {fileID: 5377702010577969444}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: WrongMoveP1
-  m_TagString: Platform
+  m_TagString: wrong
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

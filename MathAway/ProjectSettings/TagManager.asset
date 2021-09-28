@@ -16,6 +16,8 @@ TagManager:
   - Destructable
   - door
   - StartPosition
+  - wrong
+  - Crate
   layers:
   - Default
   - TransparentFX

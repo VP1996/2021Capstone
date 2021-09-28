@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8952871575041824408}
   - component: {fileID: 5254019581822583775}
   - component: {fileID: 8949671860456467074}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: WrongFallP3
-  m_TagString: Platform
+  m_TagString: wrong
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.35, y: 0.89}
+  m_AnchoredPosition: {x: -1.507, y: 1.056}
   m_SizeDelta: {x: 4.81, y: 2.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8050761225512019233
@@ -234,7 +234,7 @@ TextMesh:
   m_GameObject: {fileID: 7230477139329649000}
   m_Text: 2+2=4
   m_OffsetZ: 0
-  m_CharacterSize: 0.63
+  m_CharacterSize: 0.81
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 1

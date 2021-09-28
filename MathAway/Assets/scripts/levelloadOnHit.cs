@@ -2,24 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+
+
 
 
 public class levelloadOnHit : MonoBehaviour
 {
+
     public int ilevelToLoad;
-    public bool repeat = false;
+    bool repeat = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.name == "Player" && repeat == false)
+        if (repeat==false && collision.gameObject.name == "Player")
         {
             repeat = true;
             LoadScene();
-            
         }
     }
-
+    
     void LoadScene()
     {
         if (ilevelToLoad == 1)

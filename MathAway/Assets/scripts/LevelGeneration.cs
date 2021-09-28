@@ -9,9 +9,12 @@ public class LevelGeneration : MonoBehaviour
     public List<Transform> startingPositions = new List<Transform>();
     public GameObject[] rooms; // index 0 --> closed, index 1 --> LR, index 2 --> LRB, index 3 --> LRT, index 4 --> LRBT
     public GameObject Door;
+    public GameObject Question;
+    public GameObject[] Crates;
     public GameObject Exit;
     public GameObject Player;
     public GameObject[] RespawnPoint;
+    private List<Vector2> PositionsForCrates = new List<Vector2>();
     private int direction;
     private bool stopGeneration;
     private bool doneAlready = false;
@@ -39,14 +42,15 @@ public class LevelGeneration : MonoBehaviour
         transform.position = startingPositions[randStartingPos].position;
         Instantiate(rooms[1], transform.position, Quaternion.identity);
         Instantiate(Door, new Vector3(transform.position.x + 3, transform.position.y - 2.33f, 0), Quaternion.identity);
-        foreach(GameObject x in RespawnPoint)
+        Instantiate(Question, new Vector3(transform.position.x + 2, transform.position.y, 0), Quaternion.identity);
+        foreach (GameObject x in RespawnPoint)
         {
            Instantiate(x, new Vector3(transform.position.x + 3, transform.position.y - 2.3f, 0), Quaternion.identity);
 
         }
-        //Instantiate(Player, new Vector3(transform.position.x + 3, transform.position.y - 2.3f, 0), Quaternion.identity);
+        
 
-        direction = Random.Range(1, 5);
+        direction = Random.Range(1, 6);
     }
 
     private void Update()
@@ -62,7 +66,7 @@ public class LevelGeneration : MonoBehaviour
         if (direction == 1 || direction == 2)
         { // Move right !
 
-            if (transform.position.x < -borderLimit)
+            if (transform.position.x < borderLimit)
             {
                 downCounter = 0;
                 Vector2 pos = new Vector2(transform.position.x + moveIncrement, transform.position.y);
@@ -70,9 +74,10 @@ public class LevelGeneration : MonoBehaviour
 
                 int randRoom = Random.Range(1, 4);
                 Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+                PositionsForCrates.Add(transform.position);
 
                 // Makes sure the level generator doesn't move left !
-                direction = Random.Range(1, 5);
+                direction = Random.Range(1, 6);
                 if (direction == 3)
                 {
                     direction = 1;
@@ -96,10 +101,11 @@ public class LevelGeneration : MonoBehaviour
                 Vector2 pos = new Vector2(transform.position.x - moveIncrement, transform.position.y);
                 transform.position = pos;
 
-                int randRoom = Random.Range(1, 2);
+                int randRoom = Random.Range(1, 4);
                 Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+                PositionsForCrates.Add(transform.position);
 
-                direction = Random.Range(3, 5);
+                direction = Random.Range(3, 6);
             }
             else
             {
@@ -145,10 +151,12 @@ public class LevelGeneration : MonoBehaviour
                 transform.position = pos;
 
                 // Makes sure the room we drop into has a TOP opening !
-                
-                Instantiate(rooms[3], transform.position, Quaternion.identity);
 
-                direction = Random.Range(1, 4);
+                int randRoom = Random.Range(3, 5);
+                Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+                PositionsForCrates.Add(transform.position);
+
+                direction = Random.Range(1, 6);
             }
             else
             {
@@ -156,7 +164,21 @@ public class LevelGeneration : MonoBehaviour
                 if (doneAlready == false)
                 {
                     doneAlready = true;
+                    PositionsForCrates.Remove(transform.position);
                     Instantiate(Exit, new Vector3(transform.position.x + 3, transform.position.y - 2.33f, 0), Quaternion.identity);
+                    int temp = Random.Range(0, PositionsForCrates.Count);
+                    foreach(Vector2 position in PositionsForCrates)
+                    {
+                        if(position == PositionsForCrates[temp])
+                        {
+                            Instantiate(Crates[1], new Vector2(position.x + 3, position.y - 2.33f), Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(Crates[0], new Vector2(position.x + 3, position.y - 2.33f), Quaternion.identity);
+
+                        }                        
+                    }
                 }
             }
             

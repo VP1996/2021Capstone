@@ -81,8 +81,26 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Goal
-    clip: {fileID: 8300000, guid: e73d888914fdfcb43bae75edd507285a, type: 3}
+    clip: {fileID: 8300000, guid: ed3e037fa58580b438d264d9bc1e349e, type: 3}
     volume: 1
-    pitch: 2
-    loop: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Right
+    clip: {fileID: 8300000, guid: d57d8d6f92825394d8718c9e7d1c99ce, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ChestOpen
+    clip: {fileID: 8300000, guid: 4db0d1feb749dc748b5d5936fe4088d6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Wrong
+    clip: {fileID: 8300000, guid: 7259057df844c0a4ea83c5700275ded8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}

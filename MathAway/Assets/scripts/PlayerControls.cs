@@ -208,6 +208,13 @@ public class PlayerControls : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Crate" && Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("use");
+        }
+    }
     void CheckCrouching()
     {
         if (Input.GetButtonUp("Crouch"))
