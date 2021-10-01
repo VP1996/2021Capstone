@@ -11,11 +11,29 @@ public class RightEquations : MonoBehaviour
     int x = 1;
     int y = 1;
     int z = 1;
-    void Start()
+    float timer;
+    float WaitTime;
+    bool startTimer;
+    bool neverHit = true;
+    public void Start()
     {
         difficulty = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().diff;
         CalculateAndAdd(difficulty);
         Print();
+        WaitTime = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().waitTime;
+        timer = WaitTime;
+    }
+    public void Update()
+    {
+        if (startTimer==true) {
+            timer -= Time.deltaTime;
+            text.GetComponent<TextMesh>().text = "Right! Falling in " + Mathf.Round(timer).ToString();
+            if (timer <=0)
+            {
+                startTimer = false;
+                timer = difficulty;
+            }
+        }
     }
     void CalculateAndAdd(int diff)
     {
@@ -59,5 +77,19 @@ public class RightEquations : MonoBehaviour
         text.GetComponent<TextMesh>().text = equationsR[rand];
         
     }
-
+    public void Timer()
+    {
+        startTimer = true;
+        FindObjectOfType<AudioManager>().Play("Right");
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player" && neverHit == true)
+        {
+            neverHit = false;
+            Timer();
+        }
+    }
 }
+
+

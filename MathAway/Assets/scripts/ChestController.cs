@@ -19,6 +19,7 @@ public class ChestController : MonoBehaviour
     private string Equation;
     private string[] EquationType = new string[] { "Mult","Dev","SQRT"};
     int difficulty;
+    int count = 1;
 
     // Use this for initialization
     private void Awake()
@@ -73,6 +74,8 @@ public class ChestController : MonoBehaviour
             text.GetComponent<TextMesh>().text = "Wrong";
             FindObjectOfType<AudioManager>().Play("Baam");
             FindObjectOfType<Death>().Die(GameObject.Find("Player"));
+            GameObject.Find("Results").gameObject.GetComponent<Results>().AddWrongAnswersLevel2(count);
+            GameObject.Find("Results").gameObject.GetComponent<Results>().AddDeathsLevel2(count);
         }
         else if (type == 1)
         {

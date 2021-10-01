@@ -10,12 +10,29 @@ public class WrongEquations : MonoBehaviour
     int x = 1;
     int y = 1;
     int z = 1;
-    int count=0;
+    int count=1;
+    bool neverHit = true;
+    bool resetText = false;
+    float timer = 2f;
+
     void Start()
     {
         difficulty = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().diff;
         CalculateAndAdd(difficulty);
         Print();
+    }
+    private void Update()
+    {
+        if (resetText == true)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                resetText = false;
+                timer = 2f;
+                Print();
+            }
+        }
     }
     void CalculateAndAdd(int diff)
     {
@@ -63,9 +80,20 @@ public class WrongEquations : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Player" && neverHit == true)
+        {
+            neverHit = false;
+            GameObject.Find("Results").gameObject.GetComponent<Results>().AddWrongAnswersLevel1(count);
+        }
         text.GetComponent<TextMesh>().text = "Wrong !";
-        count++;
-        GameObject.Find("Results").gameObject.GetComponent<Results>().AddWrongAnswersLevel1(count);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && resetText == false)
+        {
+            resetText = true;
+            
+        }
 
     }
 

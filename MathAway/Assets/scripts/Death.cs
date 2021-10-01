@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
-    public int count = 0;
+    public int count = 1;
     public int difficulty;
     Scene scene;
 
@@ -26,7 +26,6 @@ public class Death : MonoBehaviour
     }
     public void Die(GameObject player)
     {
-        count++;
         difficulty = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().diff;
         if (scene.name == "Level1")
         {

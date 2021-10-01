@@ -9,7 +9,6 @@ public class Results : MonoBehaviour
     public static Results instance;
     public float tookTimeLevel1, tookTimeLevel2;
     public int difficulty;
-    public int Try = 1;
 
 
 
@@ -51,12 +50,15 @@ public class Results : MonoBehaviour
     }
     public void ResetResults(int d1, int d2, int w1, int w2, float t1, float t2)
     {
-        //difficulty = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().diff;
         //FindObjectOfType<userInsert>().AddResults(Try.ToString(), difficulty.ToString(), DiedOnlevel1.ToString(),tookTimeLevel1.ToString(), GotWrongOnlevel1.ToString(), DiedOnlevel2.ToString(),tookTimeLevel2.ToString(), GotWrongOnlevel2.ToString());
-        
-
-
-        Try++;
+        System.DateTime theTime = System.DateTime.Now;
+        Debug.Log(theTime + "; difficulty was =  "+ difficulty.ToString() + "; DiedOnlevel1 = " + 
+            DiedOnlevel1.ToString() + "; tookTimeLevel1 = " + 
+            tookTimeLevel1.ToString() + "; GotWrongOnlevel1 = " + 
+            GotWrongOnlevel1.ToString() + "; DiedOnlevel2 = " + 
+            DiedOnlevel2.ToString() + "; tookTimeLevel2 = " + 
+            tookTimeLevel2.ToString() + "; GotWrongOnlevel2 = " + 
+            GotWrongOnlevel2.ToString());
         GotWrongOnlevel1 = w1;
         GotWrongOnlevel2 = w2;
         DiedOnlevel1 = d1;

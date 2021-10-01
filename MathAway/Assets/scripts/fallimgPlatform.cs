@@ -41,10 +41,7 @@ public class fallimgPlatform : MonoBehaviour
         rb.isKinematic = true;
         GameObject plankNew = Instantiate(plank, currentPosition, Quaternion.identity, GameObject.Find("level builder").gameObject.transform);
         Destroy(gameObject);
-
-
-        
-
+    
     }
 
 }

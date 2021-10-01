@@ -8,11 +8,13 @@ public class Goal : MonoBehaviour
 {
     public GameObject effect;
     public GameObject text;
+    public GameObject text1;
     public Vector2 fireworks;
     public bool goal;
     float time;
     private IEnumerator coroutine;
     private IEnumerator returnToMain;
+
 
 
     void Start()
@@ -29,6 +31,7 @@ public class Goal : MonoBehaviour
         {
             goal = true;
             text.GetComponent<TextMesh>().text = "Congratulations!";
+            text1.GetComponent<TextMesh>().text = "Please wait and do not quit the game until you are loaded into main menue!";
             StartCoroutine(coroutine);
             StartCoroutine(returnToMain);
             FindObjectOfType<AudioManager>().Play("Goal");

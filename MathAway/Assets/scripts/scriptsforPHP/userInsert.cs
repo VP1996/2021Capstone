@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class userInsert : MonoBehaviour
 {
+    /**
     string URL = "http://localhost/mathaway/userInsert.php";
     //public string UserName, Difficulty, DiedOnL1, TimeLevel1, WrongALevel1, DiedOnL2, TimeLevel2, WrongALevel2;
     void Start()
@@ -14,7 +15,7 @@ public class userInsert : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /**
+        
         if (Input.GetKeyDown("space"))
         {
             AddResults(UserName, Difficulty, DiedOnL1,
@@ -22,7 +23,7 @@ public class userInsert : MonoBehaviour
             TimeLevel2, WrongALevel2);
 
         }
-        **/
+        
     }
 
     public void AddResults(string _UserName, string _Difficulty, string _DiedOnL1,
@@ -43,4 +44,5 @@ public class userInsert : MonoBehaviour
 
 
     }
+   **/
 }
