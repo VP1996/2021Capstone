@@ -53,8 +53,8 @@ public class Goal : MonoBehaviour
     {
         //FindObjectOfType<userInsert>().AddResults(GameObject.Find("Results").gameObject.GetComponent<Results>().Try.ToString(), GameObject.Find("Results").gameObject.GetComponent<Results>().difficulty.ToString(), GameObject.Find("Results").gameObject.GetComponent<Results>().DiedOnlevel1.ToString(),GameObject.Find("Results").gameObject.GetComponent<Results>().tookTimeLevel1.ToString(), GameObject.Find("Results").gameObject.GetComponent<Results>().GotWrongOnlevel1.ToString(), GameObject.Find("Results").gameObject.GetComponent<Results>().DiedOnlevel2.ToString(),GameObject.Find("Results").gameObject.GetComponent<Results>().tookTimeLevel2.ToString(), GameObject.Find("Results").gameObject.GetComponent<Results>().GotWrongOnlevel2.ToString());
         yield return new WaitForSeconds(waitTime);
-        GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().SetValues(0, 0, 0, 0);
         GameObject.Find("Results").gameObject.GetComponent<Results>().ResetResults(0, 0, 0, 0, 0, 0);
+        GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().SetValues(0, 0, 0, 0);
         //GameObject.Find("Main Camera").gameObject.GetComponent<Stopwatch>().resettimer(0);
         FindObjectOfType<AudioManager>().Stop("Goal");
         FindObjectOfType<AudioManager>().Play("Background");

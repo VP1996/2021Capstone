@@ -52,6 +52,7 @@ public class Results : MonoBehaviour
     {
         //FindObjectOfType<userInsert>().AddResults(Try.ToString(), difficulty.ToString(), DiedOnlevel1.ToString(),tookTimeLevel1.ToString(), GotWrongOnlevel1.ToString(), DiedOnlevel2.ToString(),tookTimeLevel2.ToString(), GotWrongOnlevel2.ToString());
         System.DateTime theTime = System.DateTime.Now;
+        difficulty = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().diff;
         Debug.Log(theTime + "; difficulty was =  "+ difficulty.ToString() + "; DiedOnlevel1 = " + 
             DiedOnlevel1.ToString() + "; tookTimeLevel1 = " + 
             tookTimeLevel1.ToString() + "; GotWrongOnlevel1 = " + 

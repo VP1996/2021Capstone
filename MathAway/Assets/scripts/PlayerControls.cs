@@ -45,7 +45,7 @@ public class PlayerControls : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         DontDestroyOnLoad(gameObject);
-        Oldspeed = speed;        
+        Oldspeed = speed;
     }
     private void Update()
     {
@@ -157,7 +157,6 @@ public class PlayerControls : MonoBehaviour
     {
         difficulty = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().diff;
         bonus = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().bullets;
-        Debug.Log(level);
 
         players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length > 1)
@@ -212,7 +211,6 @@ public class PlayerControls : MonoBehaviour
     {
         if (collision.gameObject.tag == "Crate" && Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("use");
         }
     }
     void CheckCrouching()

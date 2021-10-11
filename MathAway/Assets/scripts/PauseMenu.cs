@@ -42,7 +42,6 @@ public class PauseMenu : MonoBehaviour
         GameObject.Find("Results").gameObject.GetComponent<Results>().ResetResults(0, 0, 0, 0,0,0);
         FindObjectOfType<AudioManager>().Stop("Background");
         FindObjectOfType<AudioManager>().Play("Background");
-        Debug.Log("Load");
         Time.timeScale = 1f;
         
         SceneManager.LoadScene("MainScreen");
@@ -51,7 +50,6 @@ public class PauseMenu : MonoBehaviour
     }
     public void QuitGame()
     {
-        Debug.Log("Quit");
         Application.Quit();
     }
 }
