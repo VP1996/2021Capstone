@@ -12,6 +12,9 @@ public class Goal : MonoBehaviour
     public Vector2 fireworks;
     public bool goal;
     float time;
+    public static int WaitTime;
+    public static float TimeAtLevel1;
+    public static float TimeAtLevel2;
     private IEnumerator coroutine;
     private IEnumerator returnToMain;
 
@@ -51,10 +54,29 @@ public class Goal : MonoBehaviour
     }
     private IEnumerator WaitAndReturn(float waitTime)
     {
-        //FindObjectOfType<userInsert>().AddResults(GameObject.Find("Results").gameObject.GetComponent<Results>().Try.ToString(), GameObject.Find("Results").gameObject.GetComponent<Results>().difficulty.ToString(), GameObject.Find("Results").gameObject.GetComponent<Results>().DiedOnlevel1.ToString(),GameObject.Find("Results").gameObject.GetComponent<Results>().tookTimeLevel1.ToString(), GameObject.Find("Results").gameObject.GetComponent<Results>().GotWrongOnlevel1.ToString(), GameObject.Find("Results").gameObject.GetComponent<Results>().DiedOnlevel2.ToString(),GameObject.Find("Results").gameObject.GetComponent<Results>().tookTimeLevel2.ToString(), GameObject.Find("Results").gameObject.GetComponent<Results>().GotWrongOnlevel2.ToString());
+        
         yield return new WaitForSeconds(waitTime);
+
+
+
+        TimeAtLevel1 = GameObject.Find("Results").gameObject.GetComponent<Results>().tookTimeLevel1;
+        TimeAtLevel2 = GameObject.Find("Results").gameObject.GetComponent<Results>().tookTimeLevel2;
+        float CurrentWaitTime = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().GetWAittime();
+        
+        float t1 = PlayerPrefs.GetFloat("TimeAtLevel1");
+        float t2 = PlayerPrefs.GetFloat("TimeAtLevel2");
+
+
+        if (TimeAtLevel1>t1 || TimeAtLevel2>t2)
+        {
+            PlayerPrefs.SetFloat("TimeAtLevel1", TimeAtLevel1);
+            PlayerPrefs.SetFloat("TimeAtLevel2", TimeAtLevel2);
+        }
+
+        PlayerPrefs.SetFloat("WaitTime", CurrentWaitTime);
+
         GameObject.Find("Results").gameObject.GetComponent<Results>().ResetResults(0, 0, 0, 0, 0, 0);
-        GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().SetValues(0, 0, 0, 0);
+        GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().SetValues(0, 0, 0);
         //GameObject.Find("Main Camera").gameObject.GetComponent<Stopwatch>().resettimer(0);
         FindObjectOfType<AudioManager>().Stop("Goal");
         FindObjectOfType<AudioManager>().Play("Background");

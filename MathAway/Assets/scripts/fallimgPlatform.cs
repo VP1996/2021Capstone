@@ -6,7 +6,7 @@ public class fallimgPlatform : MonoBehaviour
 {
     Rigidbody2D rb;
     Vector2 currentPosition;
-    float WaitTime;
+    public float WaitTime;
     public GameObject plank;
     private IEnumerator coroutine;
     private bool col;
@@ -16,11 +16,12 @@ public class fallimgPlatform : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         currentPosition = gameObject.transform.position;
-        WaitTime = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().waitTime;
+        WaitTime = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().GetWAittime();
         coroutine = WaitAndBuild(WaitTime);
         col = false;
     }
 
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject collisionGameObject = collision.gameObject;
@@ -28,8 +29,13 @@ public class fallimgPlatform : MonoBehaviour
         if (collisionGameObject.name == "Player" && col==false)
         {
             col = true;
+            UpdateFallTime();
             StartCoroutine(coroutine);
         }
+    }
+    public void UpdateFallTime()
+    {
+        WaitTime = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().GetWAittime();
     }
 
 

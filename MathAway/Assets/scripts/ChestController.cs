@@ -33,7 +33,7 @@ public class ChestController : MonoBehaviour
         SolutionW.Add(temp);
         difficulty = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().diff;
         pickUpText.gameObject.SetActive(false);
-        CreateEquationsAndAnswers(difficulty,EquationType[Random.Range(0,EquationType.Length)]);
+        CreateEquationsAndAnswers(EquationType[Random.Range(0,EquationType.Length)]);
         Print(type);
     }
 
@@ -67,7 +67,6 @@ public class ChestController : MonoBehaviour
 
     public void PickUp()
     {
-        //FindObjectOfType<AudioManager>().Play("ChestOpen");
         AlreadyPicked = true;
         if (type == 0)
         {
@@ -86,13 +85,12 @@ public class ChestController : MonoBehaviour
 
     }
 
-    void CreateEquationsAndAnswers(int diff, string EType)
+    void CreateEquationsAndAnswers( string EType)
     {
-        if (diff == 1)
-        {
-            float x = Random.Range(1, 11);
-            float y = Random.Range(1, 11);
-            float z = Random.Range(1, 11);
+        
+            float x = Random.Range(1, 25);
+            float y = Random.Range(1, 25);
+            float z = Random.Range(1, 25);
             float Find;
 
             if (EType.Equals("Mult"))
@@ -137,107 +135,8 @@ public class ChestController : MonoBehaviour
                     SolutionW.Add(msgg);
                 }
             }
-        }
-        if (diff == 2)
-        {
-            float x = Random.Range(1, 22);
-            float y = Random.Range(1, 22);
-            float z = Random.Range(1, 22);
-            float Find;
-
-            if (EType.Equals("Mult"))
-            {
-                Find = (z * x) / y;
-                Find.ToString("F2");
-                SolutionR = Find + " ?";
-                string msg = y + "* X" + " / " + x + " = " + z;
-                Equation = msg;
-                for (int i = -1; i <= 10; i++)
-                {
-                    float Wrong = Find + i;
-                    string msgg = Wrong + "?";
-                    SolutionW.Add(msgg);
-                }
-            }
-            if (EType.Equals("SQRT"))
-            {
-                Find = (y * y) / x;
-                Find.ToString("F2");
-                SolutionR = Find + " ?";
-                string msg = "Sqrt( " + x + " * X) = " + y;
-                Equation = msg;
-                for (int i = -1; i <= 10; i++)
-                {
-                    float Wrong = Find + i;
-                    string msgg = Wrong + "?";
-                    SolutionW.Add(msgg);
-                }
-            }
-            if (EType.Equals("Dev"))
-            {
-                Find = (x / z) / y;
-                Find.ToString("F2");
-                SolutionR = Find + " ?";
-                string msg = x + " / (" + y + " * X) = " + z;
-                Equation = msg;
-                for (int i = -1; i <= 10; i++)
-                {
-                    float Wrong = Find + i;
-                    string msgg = Wrong + "?";
-                    SolutionW.Add(msgg);
-                }
-            }
-        }
-        if (diff == 3)
-        {
-            float x = Random.Range(1, 33);
-            float y = Random.Range(1, 33);
-            float z = Random.Range(1, 33);
-            float Find;
-
-            if (EType.Equals("Mult"))
-            {
-                Find = (z * x) / y;
-                Find.ToString("F2");
-                SolutionR = Find + " ?";
-                string msg = y + "* X" + " / " + x + " = " + z;
-                Equation = msg;
-                for (int i = -1; i <= 10; i++)
-                {
-                    float Wrong = Find + i;
-                    string msgg = Wrong + "?";
-                    SolutionW.Add(msgg);
-                }
-            }
-            if (EType.Equals("SQRT"))
-            {
-                Find = (y * y) / x;
-                Find.ToString("F2");
-                SolutionR = Find + " ?";
-                string msg = "Sqrt( " + x + " * X) = " + y;
-                Equation = msg;
-                for (int i = -1; i <= 10; i++)
-                {
-                    float Wrong = Find + i;
-                    string msgg = Wrong + "?";
-                    SolutionW.Add(msgg);
-                }
-            }
-            if (EType.Equals("Dev"))
-            {
-                Find = (x / z) / y;
-                Find.ToString("F2");
-                SolutionR = Find + " ?";
-                string msg = x + " / (" + y + " * X) = " + z;
-                Equation = msg;
-                for (int i = -1; i <= 10; i++)
-                {
-                    float Wrong = Find + i;
-                    string msgg = Wrong + "?";
-                    SolutionW.Add(msgg);
-                }
-            }
-        }
+        
+        
     }
 
         void Print(int t)

@@ -8,9 +8,7 @@ public class RightEquations : MonoBehaviour
     public GameObject text;
     private List<string> equationsR = new List<string>();
     int difficulty;
-    int x = 1;
-    int y = 1;
-    int z = 1;
+
     float timer;
     float WaitTime;
     bool startTimer;
@@ -18,9 +16,9 @@ public class RightEquations : MonoBehaviour
     public void Start()
     {
         difficulty = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().diff;
-        CalculateAndAdd(difficulty);
+        CalculateAndAdd();
         Print();
-        WaitTime = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().waitTime;
+        WaitTime = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().GetWAittime();
         timer = WaitTime;
     }
     public void Update()
@@ -35,41 +33,18 @@ public class RightEquations : MonoBehaviour
             }
         }
     }
-    void CalculateAndAdd(int diff)
+    void CalculateAndAdd()
     {
-        if(diff == 1)
-        {
-            for (int i = 1; i <= 10; i++)
+        int randint = Random.Range(100, 500);
+        for (int X = 1; X <= randint; X++)
             {
-                x = x + i;
-                y = y + x;
-                z = x + y;
-                string msg = x + " + " + y + " = " + z;
-                equationsR.Add(msg);
-            }
-        }else if(diff == 2)
-        {
-            for (int i = 1; i <= 30; i++)
+                for(int y = 1;y<= randint; y++)
             {
-                x = x + i;
-                y = y + x;
-                z = x + y;
-                string msg = x + " + " + y + " = " + z;
+                int z = X + y;
+                string msg = X + " + " + y + " = " + z;
                 equationsR.Add(msg);
-            }
-        }
-        else if (diff == 3)
-        {
-            for (int i = 1; i <= 50; i++)
-            {
-                x = x + i;
-                y = y + x;
-                z = x + y;
-                string msg = x + " + " + y + " = " + z;
-                equationsR.Add(msg);
-            }
-        }
-
+            }    
+           }
     }
     void Print()
     {
@@ -77,8 +52,14 @@ public class RightEquations : MonoBehaviour
         text.GetComponent<TextMesh>().text = equationsR[rand];
         
     }
+    public void UpdateFallTime()
+    {
+        WaitTime = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().GetWAittime();
+    }
+
     public void Timer()
     {
+        UpdateFallTime();
         startTimer = true;
         FindObjectOfType<AudioManager>().Play("Right");
     }

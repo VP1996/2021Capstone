@@ -60,6 +60,23 @@ public class levelload : MonoBehaviour
         if (ilevelToLoad == 2)
         {
             float time = GameObject.Find("Main Camera").gameObject.GetComponent<Stopwatch>().timeStart;
+            if(time < 100)
+            {
+                GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().Updatelevel2Limit(10);
+            }
+            else if (time > 100 && time <200)
+            {
+                GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().Updatelevel2Limit(8);
+            }
+            else if (time > 200 && time < 300)
+            {
+                GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().Updatelevel2Limit(6);
+            }
+            else if (time > 300)
+            {
+                GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().Updatelevel2Limit(4);
+            }
+
             GameObject.Find("Main Camera").gameObject.GetComponent<Stopwatch>().resettimer(0);
             GameObject.Find("Results").gameObject.GetComponent<Results>().setTimeLevel1(time);
             SceneManager.LoadScene(ilevelToLoad);

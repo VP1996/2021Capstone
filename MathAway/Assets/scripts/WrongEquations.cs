@@ -7,9 +7,6 @@ public class WrongEquations : MonoBehaviour
     public GameObject text;
     private List<string> equationsW = new List<string>();
     int difficulty;
-    int x = 1;
-    int y = 1;
-    int z = 1;
     int count=1;
     bool neverHit = true;
     bool resetText = false;
@@ -18,7 +15,7 @@ public class WrongEquations : MonoBehaviour
     void Start()
     {
         difficulty = GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().diff;
-        CalculateAndAdd(difficulty);
+        CalculateAndAdd();
         Print();
     }
     private void Update()
@@ -34,41 +31,19 @@ public class WrongEquations : MonoBehaviour
             }
         }
     }
-    void CalculateAndAdd(int diff)
+    void CalculateAndAdd()
     {
-        if (diff == 1)
+       int randint = Random.Range(100, 500);
+        for (int X = 1; X <= randint; X++)
         {
-            for (int i = 1; i <= 10; i++)
+            for (int y = 1; y <= randint; y++)
             {
-                x = x + i;
-                y = y + x;
-                z = x + y + Random.Range(100,600);
-                string msg = x + " + " + y + " = " + z;
+                int z = X + y+ Random.Range(5, 50); ;
+                string msg = X + " + " + y + " = " + z;
                 equationsW.Add(msg);
             }
         }
-        else if (diff == 2)
-        {
-            for (int i = 1; i <= 30; i++)
-            {
-                x = x + i;
-                y = y + x;
-                z = x + y + Random.Range(100, 600);
-                string msg = x + " + " + y + " = " + z;
-                equationsW.Add(msg);
-            }
-        }
-        else if (diff == 3)
-        {
-            for (int i = 1; i <= 50; i++)
-            {
-                x = x + i;
-                y = y + x;
-                z = x + y + Random.Range(100, 600);
-                string msg = x + " + " + y + " = " + z;
-                equationsW.Add(msg);
-            }
-        }
+
 
     }
     void Print()

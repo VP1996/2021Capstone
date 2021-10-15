@@ -38,7 +38,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResetGame()
     {
-        GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().SetValues(0,0,0,0);
+        GameObject.Find("Dificulty").gameObject.GetComponent<difficulty>().SetValues(0,0,0);
         GameObject.Find("Results").gameObject.GetComponent<Results>().ResetResults(0, 0, 0, 0,0,0);
         FindObjectOfType<AudioManager>().Stop("Background");
         FindObjectOfType<AudioManager>().Play("Background");

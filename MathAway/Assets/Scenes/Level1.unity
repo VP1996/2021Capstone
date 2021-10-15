@@ -445,8 +445,6 @@ MonoBehaviour:
   Player: {fileID: 1546680926641627234, guid: dfc0c28e4c726274c8e3deb54cf5baa4, type: 3}
   RespawnPoint:
   - {fileID: 8984393606673057511, guid: 7b7a29f473e73554fa8af528dce124f8, type: 3}
-  - {fileID: 4247389438468203139, guid: 054e9dd935f3e794c8c31588030775ce, type: 3}
-  - {fileID: 6005973405595899390, guid: fcbd59bdba32a434c9445fa74aa68d34, type: 3}
   moveIncrement: 10
   startTimeBtwSpawn: 0.1
   whatIsRoom:
@@ -1047,7 +1045,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455635199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -146.2, y: -102, z: -95.5008}
+  m_LocalPosition: {x: -146.2, y: -412.4, z: -95.5008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

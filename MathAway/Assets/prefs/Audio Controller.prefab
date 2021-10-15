@@ -46,25 +46,25 @@ MonoBehaviour:
   sounds:
   - name: Death
     clip: {fileID: 8300000, guid: bd8857660a16ba549b8cc522d93d9117, type: 3}
-    volume: 0.84
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Jump
     clip: {fileID: 8300000, guid: 2ebf2421dddc15a45b7fc6ae8197b1c0, type: 3}
-    volume: 0.91
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Background
     clip: {fileID: 8300000, guid: 0db0e49933278b046835e6ad5ebbe3a1, type: 3}
-    volume: 0.89
+    volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Bonus
     clip: {fileID: 8300000, guid: e23228116078c4444a52b57829cae483, type: 3}
-    volume: 0.89
+    volume: 1
     pitch: 2
     loop: 0
     source: {fileID: 0}
@@ -76,7 +76,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Baam
     clip: {fileID: 8300000, guid: d1698dd553af8ef4d887bc83b9687173, type: 3}
-    volume: 0.89
+    volume: 1
     pitch: 2
     loop: 0
     source: {fileID: 0}
